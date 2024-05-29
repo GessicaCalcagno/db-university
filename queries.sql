@@ -19,9 +19,10 @@ WHERE `period` = "I semestre"
 AND `year` = 1;
 
 -- 5. Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio (dopo le 14) del 20/06/2020 (21)
-
-
-
+SELECT * 
+FROM `exams` 
+WHERE `hour` > "14:00:00"
+AND `date` = "2020-06-20";
 
 -- 6. Selezionare tutti i corsi di laurea magistrale (38)
 SELECT * 
@@ -31,7 +32,6 @@ WHERE `level` = "magistrale";
 -- 7. Da quanti dipartimenti è composta l'università? (12)
 SELECT COUNT(`id`) AS `num_dipartiments`
 FROM `departments`;
-
 
 -- 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
 SELECT * 
@@ -48,3 +48,5 @@ SET `office_number` = 126
 WHERE `id` = 1;
 
 -- 11. Eliminare dalla tabella studenti il record creato precedentemente al punto 9
+DELETE FROM `students` 
+WHERE `email`= "disperazioneoliosutela@gmail.com";
