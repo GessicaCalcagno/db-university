@@ -51,3 +51,6 @@ WHERE `id` = 1;
 -- 11. Eliminare dalla tabella studenti il record creato precedentemente al punto 9
 DELETE FROM `students` 
 WHERE `email`= "disperazioneoliosutela@gmail.com";
+-- OPPURE
+DELETE FROM `students` 
+WHERE `id`= "5001";
