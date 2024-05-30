@@ -47,6 +47,10 @@ VALUES ("67","Gessica","Calchi", "2000-08-31", "Q10VYW51Z02T871B", "2019-02-21",
 UPDATE `teachers`
 SET `office_number` = 126
 WHERE `id` = 1;
+-- OPPURE : Pietro Rizzo
+UPDATE `teachers`
+SET `office_number` = 126
+WHERE `name`= "Pietro" AND `surname` = "Rizzo";
 
 -- 11. Eliminare dalla tabella studenti il record creato precedentemente al punto 9
 DELETE FROM `students` 
