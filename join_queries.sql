@@ -40,7 +40,7 @@ INNER JOIN `degrees`
     ON `students`.`degree_id` = `degrees`.`id`
 INNER JOIN `departments` 
     ON `degrees`.`department_id` = `departments`.`id`
-ORDER BY `students`.`name`;
+ORDER BY `students`.`name`, `students`.`surname`  ASC;
 
 -- 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 SELECT 
@@ -71,3 +71,18 @@ INNER JOIN `departments`
 WHERE `departments`.`name` = 'Dipartimento di Matematica';
 
 -- 7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
+SELECT `students`.`name`, 
+`students`.`surname`,
+`exam_student`.`vote` AS `voto_esame`,
+`exams`.`date`,
+`exams`.`id`,
+MAX(`exam_student`.`vote`) AS `num_tentativi`,
+COUNT(*)
+FROM `students` 
+INNER JOIN `exam_student`
+ON `students`.`id`=`exam_student`.`vote`
+INNER JOIN `exams`
+ON `exam_student`.`exam_id`=`exams`.`id`
+GROUP BY `students`.`id`, `exams`.`id`
+HAVING MAX(`exam_student`.`vote`) >= 18
+ORDER BY `students`.`name`, `students`.`surname`
